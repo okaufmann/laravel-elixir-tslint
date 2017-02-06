@@ -30,8 +30,7 @@ Elixir.extend('tslint', function (scripts, options) {
  * @param  {string|null}  output
  * @return {GulpPaths}
  */
-var getPaths = function (src, baseDir, output) {
+var getPaths = (src) => {
     return new Elixir.GulpPaths()
-        .src(src, baseDir || Elixir.config.typescript.folder)
-        .output(output || Elixir.config.get('public.js.outputFolder'), 'all.js');
+        .src(src || [Elixir.config.typescript.folder + "/**/*.ts"]);
 };

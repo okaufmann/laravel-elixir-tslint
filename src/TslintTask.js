@@ -12,6 +12,8 @@ class TslintTask extends Elixir.Task {
         if (Elixir.isWatching()) {
             options = assignIn(options, {emitError: false});
         }
+
+        this.output  = '\u200B';
         this.options = options;
     }
 
@@ -52,8 +54,7 @@ class TslintTask extends Elixir.Task {
      * Register file watchers.
      */
     registerWatchers() {
-        this.watch(path.join(this.paths.src.baseDir, "**/*.ts"))
-            .ignore(this.paths.output.path);
+        this.watch(this.src.path);
     }
 }
 
